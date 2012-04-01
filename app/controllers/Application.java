@@ -1,14 +1,17 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import java.util.List;
 
-import views.html.*;
+import models.Task;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
 public class Application extends Controller {
   
   public static Result index() {
-    return ok(index.render("Your new application is ready."));
+	  List<Task> tasks = Task.find.all();
+    return ok(index.render("Your new application is ready. Test1!!"));
   }
   
 }

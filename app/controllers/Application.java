@@ -7,6 +7,7 @@ import java.net.URL;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
+import views.html.youtube;
 
 import com.google.gdata.client.youtube.YouTubeService;
 import com.google.gdata.data.youtube.VideoEntry;
@@ -32,6 +33,9 @@ public class Application extends Controller {
 		for(VideoEntry videoEntry : videoFeed.getEntries() ) {
 		     testData += videoEntry.getHtmlLink().getHref()+",";
 		  }
+		
+		return ok(youtube.render(videoFeed.getEntries()));
+		
 	} catch (MalformedURLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -42,6 +46,7 @@ public class Application extends Controller {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	
 	
 	return ok(testData); 
   }

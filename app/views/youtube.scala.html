@@ -1,0 +1,11 @@
+@(entries:List[com.google.gdata.data.youtube.VideoEntry])
+
+@main("Youtube test") {
+    
+   <ul>
+	@for(videoEntry <- entries) {
+  		<li>@videoEntry.getHtmlLink().getHref() </li>
+	} 
+	</ul>
+    
+}

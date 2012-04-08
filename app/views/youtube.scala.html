@@ -10,7 +10,7 @@
    </div> 
    <ul class="thumbnails">
 	@for(videoEntry <- entries) {
-		<li class="span4">
+		<li class="span6">
     			<a href="@videoEntry.getHtmlLink().getHref()" class="thumbnail">
     				<img src="@videoEntry.getMediaGroup().getThumbnails().get(1).getUrl()" />
     				<h5>@videoEntry.getTitle().getPlainText()</h5>

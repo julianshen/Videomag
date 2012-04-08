@@ -1,13 +1,15 @@
 @(entries:List[com.google.gdata.data.youtube.VideoEntry])
 
 @main("Youtube test") {
-    
+   <div class="navbar navbar-fixed-top">
+  	 <a class="brand" href="#">Videomag</a>   
+   </div> 
    <ul class="thumbnails">
 	@for(videoEntry <- entries) {
 		<li class="span4">
     			<a href="@videoEntry.getHtmlLink().getHref()" class="thumbnail">
     				<img src="@videoEntry.getMediaGroup().getThumbnails().get(1).getUrl()" />
-    				<h5>@videoEntry.getTitle()</h5>
+    				<h5>@videoEntry.getTitle().getPlainText()</h5>
     			</a>
   		</li>
 	} 

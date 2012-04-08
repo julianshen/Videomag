@@ -2,12 +2,16 @@
 
 @main("Youtube test") {
     
-   <div class="row">
+   <ul class="thumbnails">
 	@for(videoEntry <- entries) {
-		<div class="span3">
-  			<a href="@videoEntry.getHtmlLink().getHref()"><img src="@videoEntry.getMediaGroup().getThumbnails().get(1).getUrl()" /></a>
+		<div class="span2">
+		<li class="thumbnail">
+    		<div class="thumbnail">
+  				<a href="@videoEntry.getHtmlLink().getHref()"><img src="@videoEntry.getMediaGroup().getThumbnails().get(1).getUrl()" /></a>
+  			</div>
+  		</li>
   		</div>
 	} 
-	</div>
+	</ul>
     
 }

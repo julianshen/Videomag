@@ -1,22 +1,39 @@
 @(entries:List[com.google.gdata.data.youtube.VideoEntry])
 
+@video_entry(i:Int) = {
+      @if(i%5==0) {
+      	<li class="span7">
+      } else {
+         <li class="span2">
+      }
+      
+    			<a href="@entries.get(i).getHtmlLink().getHref()" class="thumbnail">
+    				<img src="@entries.get(i).getMediaGroup().getThumbnails().get(1).getUrl()" />
+    				<div class="caption">
+    				<h5>@entries.get(i).getTitle().getPlainText()</h5>
+    				</div>
+    			</a>
+  	 </li>
+}
+
 @main("Youtube test") {
-   <div class="navbar navbar-fixed-top">
+   <div class="navbar">
    	 <div class="navbar-inner">
     	<div class="container">
   	 		<a class="brand" href="#">Videomag</a>   
   	 	</div>
   	 </div>  	 		
    </div> 
+   
+   <div class="span12">
    <ul class="thumbnails">
-	@for(videoEntry <- entries) {
-		<li class="span6">
-    			<a href="@videoEntry.getHtmlLink().getHref()" class="thumbnail">
-    				<img src="@videoEntry.getMediaGroup().getThumbnails().get(1).getUrl()" />
-    				<h5>@videoEntry.getTitle().getPlainText()</h5>
-    			</a>
-  		</li>
+    
+    @for(i<-0 until entries.length) {
+	    
+		@video_entry(i)
 	} 
+	
 	</ul>
+	</div>
     
 }

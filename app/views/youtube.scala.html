@@ -1,18 +1,17 @@
 @(entries:List[com.google.gdata.data.youtube.VideoEntry])
 
 @video_entry(i:Int) = {
-      @if(i%5==0) {
-      	<li class="span7">
-      } else {
-         <li class="span2">
-      }
-      
+     <li class="span6" style="position: relative;">
+           
     			<a href="@entries.get(i).getHtmlLink().getHref()" class="thumbnail">
     				<img src="@entries.get(i).getMediaGroup().getThumbnails().get(1).getUrl()" />
-    				<div class="caption">
-    				<h5>@entries.get(i).getTitle().getPlainText()</h5>
-    				</div>
+    				
     			</a>
+    			<div class="videocap bak">
+    				<div class="videocap title">
+    				@entries.get(i).getTitle().getPlainText()
+    				</div>
+    			</div>
   	 </li>
 }
 
@@ -21,7 +20,11 @@
    	 <div class="navbar-inner">
     	<div class="container">
   	 		<a class="brand" href="#">Videomag</a>   
+  	 		<ul class="nav pull-right">
+  	 			<li><a href="#">Login</a></li>
+  	 		</ul>
   	 	</div>
+  	 	
   	 </div>  	 		
    </div> 
    

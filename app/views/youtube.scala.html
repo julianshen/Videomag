@@ -7,9 +7,9 @@
     				<img src="@entries.get(i).getMediaGroup().getThumbnails().get(1).getUrl()" />
     				
     			</a>
-    			<div class="videocap bak">
-    				<div class="videocap title">
-    				@entries.get(i).getTitle().getPlainText()
+    			<div class="videocap">
+    				<div class="title">
+    					@entries.get(i).getTitle().getPlainText()
     				</div>
     			</div>
   	 </li>
@@ -39,5 +39,5 @@
 	</ul>
 	</div>
 
-	@fbconnect()    
+	@fbconnect("290247884332061","publish_actions, user_actions.video")    
 }

@@ -3,8 +3,8 @@
 @video_entry(i:Int) = {
      <li class="span6" style="position: relative;">
            
-    			<a href="@entries.get(i).getHtmlLink().getHref()" class="thumbnail">
-    				<img src="@entries.get(i).getMediaGroup().getThumbnails().get(1).getUrl()" />    				
+    			<a href="@entries.get(i).getHtmlLink().getHref()" class="thumbnail" onclick="watchVideo(this.href);return false;">
+    				<img src="@entries.get(i).getMediaGroup().getThumbnails().get(1).getUrl()"  />    				
     			</a>
     			<div class="videocap">
     				<div class="title">
@@ -38,5 +38,28 @@
 	</ul>
 	</div>
 
-	@fbconnect("290247884332061","publish_actions, user_actions.video")    
+	@fbconnect("290247884332061","publish_actions, user_actions.video") 
+	
+	<script>
+		function watchVideo(link) {
+			if(FB) {
+				FB.getLoginStatus(function(response) {
+					  if (response.status === 'connected') {
+						  FB.api('/me/video.watches', 'post', {video: link}, function(response) {
+							  if (!response || response.error) {
+								    console.log('Error occured');
+								    
+								    if(response.error) {
+								    	console.log(response.error);
+								    }
+								  } else {
+								    console.log('Post ID: ' + response.id);
+								  }
+							  window.location.href=link;
+								});
+					  }
+				});
+			}
+		}
+	</script>   
 }

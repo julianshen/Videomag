@@ -41,7 +41,9 @@
   
   function loginFB() {
 	  if(FB) {
-		  FB.login();
+		  FB.login(function(response) {
+			   // handle the response
+		  }, {scope: '@scope' });
 	  }
   }
 </script>

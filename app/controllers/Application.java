@@ -18,8 +18,8 @@ import com.google.gdata.util.ServiceException;
 public class Application extends Controller {
   
   public static Result index() {
-	//List<Task> tasks = Task.find.all();
-    return ok(index.render("Your new application is ready. Test1!!"));
+	//return ok(index.render("Your new application is ready. Test1!!"));
+	return youtubeTop();  
   }
   
   public static Result youtubeTop() {

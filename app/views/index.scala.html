@@ -2,7 +2,6 @@
 @import play.api.Play.current
 
 @main("Welcome to Play 2.0") {
-    @play.Play.application().configuration().getString("logger.play")
     @play20.welcome(message, style = "Java")
     
 }

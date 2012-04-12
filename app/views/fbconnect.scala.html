@@ -1,12 +1,12 @@
-@(app_id:String, scope: String)
-
+@app_id() = {@play.Play.application().configuration().getString("facebook.app.id")}
+@scope() = {@play.Play.application().configuration().getString("facebook.app.scope")}
 <div id="fb-root">
 </div>
 
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '@app_id', // App ID
+      appId      : '@app_id()', // App ID
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
@@ -43,7 +43,7 @@
 	  if(FB) {
 		  FB.login(function(response) {
 			   // handle the response
-		  }, {scope: '@scope' });
+		  }, {scope: '@scope()' });
 	  }
   }
 </script>

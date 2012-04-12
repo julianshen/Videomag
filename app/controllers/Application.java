@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import play.Play;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
@@ -22,9 +23,13 @@ public class Application extends Controller {
   }
   
   public static Result youtubeTop() {
-	YouTubeService service = new YouTubeService("MyTest", "AI39si4w2Vv87Y-7KTFFZEVyL8_ylah-sxx2YHVEONVtMcW1et3JvHHXf1ew_RdUqihgvCv6bHATIfoPPaCCsuiaeD_hdCh69w");
+	final String youtubeApp = Play.application().configuration().getString("youtube.id");
+	final String youtubeKey = Play.application().configuration().getString("youtube.key");
+	YouTubeService service = new YouTubeService(youtubeApp, youtubeKey);
 	VideoFeed videoFeed;
 	String testData="No Data";
+	
+	
 	try {
 		
 		videoFeed = service.getFeed(new URL("https://gdata.youtube.com/feeds/api/standardfeeds/top_rated"), VideoFeed.class);
